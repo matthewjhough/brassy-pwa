@@ -1,0 +1,36 @@
+.messageWrap {
+	padding: 1rem;
+}
+
+.messageLine {
+	display: flex;
+}
+
+.reversed {
+	flex-direction: row-reverse;
+
+	.content {
+		margin-right: 1rem;
+		margin-left: 0;
+	}
+}
+
+.name,
+.content {
+	font-size: 1rem;
+}
+
+.name {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 20%;
+	font-weight: 700;
+}
+
+.content {
+	margin-left: 1rem;
+	background: #f4f4f4;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}

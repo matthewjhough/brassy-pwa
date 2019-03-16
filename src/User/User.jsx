@@ -7,7 +7,7 @@ export function User({ children }) {
 	const [user, setUser] = useState();
 
 	if (!user) {
-		return <Login />;
+		return <Login setUser={setUser} />;
 	}
 
 	return <UserProvider value={user}>{children}</UserProvider>;

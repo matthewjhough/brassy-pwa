@@ -1,10 +1,21 @@
+$big-font: 2rem;
+$med-font: 1.5rem;
+
 .login {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	min-height: 100vmin;
 	background: #333;
 	color: #fff;
 	font-weight: 900;
-	font-size: 2rem;
+	font-size: $big-font;
+
+	button {
+		font-size: $med-font;
+		margin: 1rem 0;
+		padding: 1rem;
+		width: 10rem;
+	}
 }

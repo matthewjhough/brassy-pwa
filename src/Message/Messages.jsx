@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { UserContext } from '../User/userContext';
 import styles from './Message.module.scss';
 
-const mockUserId = '1';
 /**
  * <Messages />
  * @param {object} data - array of message objects
  */
 export function Messages({ data }) {
+	const { id: userId } = useContext(UserContext);
 	if (!Array.isArray(data)) return <div>Fetching Messages...</div>;
 
 	return (
@@ -17,7 +18,7 @@ export function Messages({ data }) {
 				<div
 					key={`${JSON.stringify(user)}-${content}`}
 					className={classnames(styles.messageLine, {
-						[styles.reversed]: user.id !== mockUserId,
+						[styles.reversed]: user.id !== userId,
 					})}>
 					<p className={styles.name}>
 						{user.firstName} {user.lastName}

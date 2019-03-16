@@ -3,10 +3,12 @@ import { Header } from '../Header';
 import { Session } from '../Session';
 import { Messages } from '../Message';
 import { Send } from '../Send';
+import { User } from '../User';
 import './App.scss';
 
 /**
  * Todo for prototype:
+ * PRE - create basic user select dropdown & set current user based on fetch in <UserContext />
  * 1) style <Send /> & test.
  * 2) create mutation for <Send /> messages
  * 3) create subscription for session messages.
@@ -16,7 +18,7 @@ import './App.scss';
 
 export function App() {
 	return (
-		<>
+		<User>
 			<Header />
 			<Session>
 				{({ data }) => (
@@ -28,6 +30,6 @@ export function App() {
 				)}
 			</Session>
 			<Send />
-		</>
+		</User>
 	);
 }

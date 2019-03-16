@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { UserContext } from '../User/userContext';
-import styles from './Message.module.scss';
+import styles from './Messages.module.scss';
 
 /**
  * <Messages />

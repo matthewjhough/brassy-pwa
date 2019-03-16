@@ -1,4 +1,8 @@
+$other-user-bg: #ccc;
+$self-color: #87cefa;
+
 .messageWrap {
+	overflow: auto;
 	padding: 1rem;
 }
 
@@ -6,31 +10,40 @@
 	display: flex;
 }
 
-.reversed {
-	flex-direction: row-reverse;
-
-	.content {
-		margin-right: 1rem;
-		margin-left: 0;
-	}
-}
-
 .name,
 .content {
+	background: $other-user-bg;
 	font-size: 1rem;
 }
 
 .name {
 	display: flex;
-	justify-content: flex-start;
-	align-items: flex-end;
-	width: 20%;
+	justify-content: center;
+	align-items: center;
 	font-weight: 700;
+
+	width: 1rem;
+	padding: 1rem;
+	border-radius: 100%;
 }
 
 .content {
 	margin-left: 1rem;
-	background: #ccc;
+	background: $self-color;
 	padding: 1rem;
 	border-radius: 0.5rem;
+}
+
+.reversed {
+	flex-direction: row-reverse;
+
+	.name {
+		justify-content: flex-end;
+	}
+
+	.content {
+		margin-right: 1rem;
+		margin-left: 0;
+		background: $other-user-bg;
+	}
 }

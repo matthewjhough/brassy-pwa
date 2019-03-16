@@ -1,6 +1,9 @@
+$brassy-dark-bg: #282c34;
+$brassy-light-bg: #f4f4f4;
+
 .header {
-	color: #f4f4f4;
-	background: #282c34;
+	color: $brassy-light-bg;
+	background: $brassy-dark-bg;
 	display: flex;
 	justify-content: center;
 	padding: 0.75rem;

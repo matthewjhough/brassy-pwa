@@ -13,7 +13,7 @@ export function Messages({ data }) {
 	if (!Array.isArray(data)) return <div>Fetching Messages...</div>;
 
 	return (
-		<div className={styles.messageWrap}>
+		<main className={styles.messageWrap}>
 			{data.map(({ user, content }) => (
 				<div
 					key={`${JSON.stringify(user)}-${content}`}
@@ -21,13 +21,15 @@ export function Messages({ data }) {
 						[styles.reversed]: user.id !== userId,
 					})}>
 					<p className={styles.name}>
-						{user.firstName} {user.lastName}
+						{`${user.firstName.charAt(0)}${user.lastName.charAt(
+							0
+						)}`}
 					</p>
 
 					<p className={styles.content}>{content}</p>
 				</div>
 			))}
-		</div>
+		</main>
 	);
 }
 

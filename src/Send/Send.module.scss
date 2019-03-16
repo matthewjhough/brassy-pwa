@@ -1,0 +1,16 @@
+$brassy-dark-bg: #282c34;
+
+.send {
+	background: $brassy-dark-bg;
+	display: flex;
+	height: 10vmin;
+	padding-bottom: 1rem;
+
+	textarea {
+		width: 80%;
+	}
+
+	button {
+		width: 20%;
+	}
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header } from '../Header';
-import { Messages } from '../Message';
-import { Send } from '../Send';
+import { Chat } from '../Chat';
 import { User } from '../User';
 import './App.scss';
 
@@ -19,8 +18,7 @@ export function App() {
 	return (
 		<User>
 			<Header />
-			<Messages />
-			<Send />
+			<Chat />
 		</User>
 	);
 }

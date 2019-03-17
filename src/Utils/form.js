@@ -1,10 +1,12 @@
-export function sendOnEnter(e, createMutation, value) {
-	if (e.key === 'Enter') {
-		e.preventDefault();
-		createMutation(value);
-	}
-}
+export function sendMutation(mutation, value) {
+	return function(e) {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			mutation(value);
+		}
 
-export function sendOnClick(createMutation, value) {
-	createMutation(value);
+		if (e.type === 'click') {
+			mutation(value);
+		}
+	};
 }

@@ -11,14 +11,25 @@ describe('<Messages />', () => {
 		renderWithProvider(<Messages />, sessionMock);
 	});
 
-	it('displays loading text when not correct format yet', () => {
-		const { getByText } = renderWithProvider(<Messages />, sessionMock);
-
-		expect(getByText('Fetching Messages...')).toBeDefined();
-	});
-
 	it('displays data from content passed in', async () => {
-		const { getByText } = renderWithProvider(<Messages />, sessionMock);
+		const { getByText } = renderWithProvider(
+			<Messages
+				userId="1"
+				session={{
+					messages: [
+						{
+							content: 'hello',
+							user: {
+								id: '1',
+								firstName: 'test',
+								lastName: 'two',
+							},
+						},
+					],
+				}}
+			/>,
+			sessionMock
+		);
 
 		expect(await waitForElement(() => getByText('hello'))).toBeDefined();
 	});

@@ -1,39 +1,43 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from 'react-apollo-hooks';
-import { UserContext } from '../User';
-import { useSession } from '../Session';
+import PropTypes from 'prop-types';
 import { CREATE_MESSAGE_MUTATION } from '../Message';
-import { sendOnClick, sendOnEnter } from '../Utils/form';
+import { sendMutation } from '../Utils/form';
 import styles from './Send.module.scss';
 
-export function Send() {
-	const { data, loading } = useSession();
+export function Send({ session, userId }) {
 	const [value, setValue] = useState();
-	const { id } = useContext(UserContext);
-
 	const createMessage = useMutation(CREATE_MESSAGE_MUTATION, {
 		variables: {
 			content: value,
-			userId: id,
-			sessionId: data.session && data.sessions[0].id,
+			userId: userId,
+			sessionId: session.id,
 		},
 	});
-
-	console.log('Data <Send /> recieves', id, data, value);
-
-	if (loading) return <div />;
 
 	return (
 		<footer className={styles.send}>
 			<textarea
 				value={value}
-				onKeyPress={e => sendOnEnter(e, createMessage, value)}
+				onKeyPress={sendMutation(createMessage, value)}
 				onChange={e => setValue(e.target.value)}
 				placeholder="type your message here..."
 			/>
-			<button onClick={() => sendOnClick(createMessage, value)}>
-				Send
-			</button>
+			<button onClick={sendMutation(createMessage, value)}>Send</button>
 		</footer>
 	);
 }
+
+Send.defaultProps = {
+	session: {
+		id: '',
+	},
+	userId: '',
+};
+
+Send.propTypes = {
+	session: PropTypes.shape({
+		id: PropTypes.string,
+	}),
+	userId: PropTypes.string,
+};

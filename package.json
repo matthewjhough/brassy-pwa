@@ -29,11 +29,12 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
-		"apollo-link-mock": "^1.0.1",
-		"prop-types": "^15.7.2",
-		"react-testing-library": "^6.0.0",
 		"apollo-cache-inmemory": "^1.5.1",
-		"apollo-client": "^2.5.1"
+		"apollo-client": "^2.5.1",
+		"apollo-link-mock": "^1.0.1",
+		"eslint-plugin-react-hooks": "^1.5.1",
+		"prop-types": "^15.7.2",
+		"react-testing-library": "^6.0.0"
 	},
 	"jest": {
 		"collectCoverageFrom": [

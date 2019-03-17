@@ -1,6 +1,5 @@
 import React from 'react';
 import { Header } from '../Header';
-import { Session } from '../Session';
 import { Messages } from '../Message';
 import { Send } from '../Send';
 import { User } from '../User';
@@ -20,15 +19,7 @@ export function App() {
 	return (
 		<User>
 			<Header />
-			<Session>
-				{({ data }) => (
-					<Messages
-						data={
-							data && data.sessions && data.sessions[0].messages
-						}
-					/>
-				)}
-			</Session>
+			<Messages />
 			<Send />
 		</User>
 	);

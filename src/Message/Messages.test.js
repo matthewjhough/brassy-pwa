@@ -1,42 +1,25 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { cleanup, waitForElement } from 'react-testing-library';
 import { Messages } from './Messages';
-import { UserProvider } from '../User/userContext';
+import { sessionMock } from '../Session';
+import { renderWithProvider } from '../__mocks__/apolloProvider';
 
-const mockData = [
-	{ content: 'hello', user: { firstName: 'test', lastName: 'two', id: 1 } },
-];
-
-function mockUser() {
-	return { id: '1' };
-}
+afterEach(cleanup);
 
 describe('<Messages />', () => {
 	it('renders without crashing', () => {
-		render(
-			<UserProvider value={mockUser()}>
-				<Messages />
-			</UserProvider>
-		);
+		renderWithProvider(<Messages />, sessionMock);
 	});
 
 	it('displays loading text when not correct format yet', () => {
-		const { getByText } = render(
-			<UserProvider value={mockUser()}>
-				<Messages data={{}} />
-			</UserProvider>
-		);
+		const { getByText } = renderWithProvider(<Messages />, sessionMock);
 
 		expect(getByText('Fetching Messages...')).toBeDefined();
 	});
 
-	it('displays data from content passed in', () => {
-		const { getByText } = render(
-			<UserProvider value={mockUser()}>
-				<Messages data={mockData} />
-			</UserProvider>
-		);
+	it('displays data from content passed in', async () => {
+		const { getByText } = renderWithProvider(<Messages />, sessionMock);
 
-		expect(getByText('hello')).toBeDefined();
+		expect(await waitForElement(() => getByText('hello'))).toBeDefined();
 	});
 });

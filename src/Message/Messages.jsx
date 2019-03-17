@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { useSession } from '../Session';
 import { UserContext } from '../User/userContext';
 import styles from './Messages.module.scss';
 
@@ -8,13 +9,15 @@ import styles from './Messages.module.scss';
  * <Messages />
  * @param {object} data - array of message objects
  */
-export function Messages({ data }) {
+export function Messages() {
 	const { id: userId } = useContext(UserContext);
-	if (!Array.isArray(data)) return <div>Fetching Messages...</div>;
+	const { data, error, loading } = useSession();
+	if (loading) return <div>Fetching Messages...</div>;
+	if (!data.sessions || error) return <div>Something went wrong.</div>;
 
 	return (
 		<main className={styles.messageWrap}>
-			{data.map(({ user, content }) => (
+			{data.sessions[0].messages.map(({ user, content }) => (
 				<div
 					key={`${JSON.stringify(user)}-${content}`}
 					className={classnames(styles.messageLine, {

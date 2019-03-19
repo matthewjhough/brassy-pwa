@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useQuery } from 'react-apollo-hooks';
 import { useMessages } from '../Message';
 import { useSession } from '../Session';
 import { UserContext } from '../User/userContext';

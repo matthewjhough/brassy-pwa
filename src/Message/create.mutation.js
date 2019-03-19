@@ -7,11 +7,14 @@ export const CREATE_MESSAGE_MUTATION = gql`
 			content: $content
 			sessionId: $sessionId
 		) {
-			id
 			content
-
+			session {
+				id
+			}
 			user {
+				id
 				firstName
+				lastName
 			}
 		}
 	}

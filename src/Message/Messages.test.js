@@ -15,7 +15,7 @@ describe('<Messages />', () => {
 		const { getByText } = renderWithProvider(
 			<Messages
 				userId="1"
-				session={{
+				data={{
 					messages: [
 						{
 							content: 'hello',
